@@ -520,28 +520,36 @@ img { max-width: 100%; display: block; }
 
 .service-card {
   background: var(--surface);
-  padding: 32px;
+  padding: 0;
   border-radius: var(--radius-lg);
   border: 1px solid rgba(194,199,209,0.3);
   transition: all 0.3s ease;
+  overflow: hidden;
 }
 .service-card:hover {
   border-color: rgba(0,53,95,0.2);
   box-shadow: 0 20px 40px rgba(0,53,95,0.06);
   transform: translateY(-4px);
 }
-.service-icon {
-  width: 56px; height: 56px;
+.service-image {
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
   background: var(--surface-container-highest);
-  border-radius: var(--radius-sm);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 26px;
-  margin-bottom: 24px;
-  transition: background 0.2s ease;
 }
-.service-card:hover .service-icon { background: var(--primary); }
+.service-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+.service-card:hover .service-image img {
+  transform: scale(1.05);
+}
+.service-body {
+  padding: 24px 28px 28px;
+}
 .service-card h3 { font-size: 20px; font-weight: 600; margin-bottom: 12px; }
-.service-card p { color: var(--on-surface-variant); font-size: 15px; margin-bottom: 20px; }
+.service-card p { color: var(--on-surface-variant); font-size: 15px; margin-bottom: 0; }
 .learn-more {
   display: inline-flex;
   align-items: center;
@@ -824,6 +832,37 @@ img { max-width: 100%; display: block; }
   border-radius: var(--radius-sm);
   color: var(--primary);
   font-weight: 700;
+}
+
+.about-contact {
+  margin-top: 24px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(194,199,209,0.35);
+}
+.about-contact h3 {
+  font-size: 20px;
+  margin-bottom: 16px;
+}
+.about-phone-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.about-phone-list li {
+  padding: 12px 14px;
+  background: var(--surface-container-low);
+  border-radius: var(--radius-sm);
+}
+.about-phone-list a {
+  color: var(--primary);
+  font-weight: 700;
+  font-size: 16px;
+}
+.about-phone-list a:hover {
+  text-decoration: underline;
 }
 
 /* ---------------------------------- Trust badges ---------------------------------- */
@@ -1213,21 +1252,25 @@ img { max-width: 100%; display: block; }
   }
 
   .header-inner {
-    height: 72px;
+    height: 76px;
   }
   .site-header.scrolled .header-inner {
-    height: 62px;
+    height: 68px;
   }
   .brand-logo {
-    height: 46px;
-    width: 46px;
+    height: 64px;
+    width: 64px;
+  }
+  .site-header.scrolled .brand-logo {
+    height: 52px;
+    width: 52px;
   }
   .brand-name {
     max-width: 180px;
     font-size: 16px;
   }
   .mobile-drawer {
-    top: 72px;
+    top: 76px;
   }
 
   .hero {
@@ -1275,7 +1318,9 @@ img { max-width: 100%; display: block; }
   .about-team-copy h2 {
     font-size: 26px;
   }
-  .service-card,
+  .service-body {
+    padding: 20px 22px 24px;
+  }
   .doctor-panel,
   .review-card {
     padding: 24px;
